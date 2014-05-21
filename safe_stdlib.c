@@ -68,6 +68,23 @@ void print_buffer(const char *name, int *buffer, int m, int n)
     }
 }
 
+void print_distances(const char *name, double *buffer, int m, int n)
+{
+    int j;
+    printf("%s\n", name);
+    for (j = 0; j < m; ++j)
+    {
+        int i;
+        double *buffer_m = buffer + n * j;
+
+        for (i = 0; i < n - 1; ++i)
+            printf("%f ", buffer_m[i]);
+        if (n > 0)
+            printf("%f\n", buffer_m[n - 1]);
+    }
+}
+
+
 void print_time(const char *name, long time)
 {
     long time_ms = (time + 500000) / 1000000;

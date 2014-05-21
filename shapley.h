@@ -3,7 +3,8 @@
 
 #include "types.h"
 
-void compute_shapley(Edges *edges, int n, double shapley[],
+void compute_shapley(Adjacency *adjacency, int n, double shapley[],
+                     double (*function)(double),
                      long *kernel_time, long *summary_time);
 
 #endif /*__SHAPLEY_H__*/

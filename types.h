@@ -4,6 +4,7 @@
 typedef struct {
     int v;
     int w;
+    double weight;
 } Edge;
 
 typedef struct {
@@ -21,6 +22,7 @@ typedef struct {
     int *virtualMap;
     int *reverseVirtualMap;
     int *virtualShifts;
+    double *weights;
 } Adjacency;
 
 typedef struct {

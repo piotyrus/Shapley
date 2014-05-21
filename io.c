@@ -20,7 +20,7 @@ void read_input(FILE *input, Edges *edges)
 
     while (fscanf(input, "%d %d", &v1, &v2) == 2)
     {
-        Edge edge = {MIN(v1, v2), MAX(v1, v2)};
+        Edge edge = {MIN(v1, v2), MAX(v1, v2), 1.0};
 
         memcpy(&edges->list[edges->m], &edge, sizeof(Edge));
         ++edges->m;

@@ -14,6 +14,8 @@ void *safeMmap(void *start, size_t length, int prot , int flags, int fd, off_t o
 
 void print_buffer(const char *name, int *buffer, int m, int n);
 
+void print_distances(const char *name, double *buffer, int m, int n);
+
 void print_time(const char *name, long time);
 
 #endif /*__SAFE_STDLIB_H__*/

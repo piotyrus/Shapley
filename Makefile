@@ -1,6 +1,6 @@
 CFLAGS = -Wall
 LDFLAGS	=
-LDLIBS = -lOpenCL -lstdc++
+LDLIBS = -lstdc++
 EXECS = shapley 
 
 CFLAGS += -DNDEBUG
@@ -14,9 +14,11 @@ all: $(TARGET)
 
 main.o : main.c
 
-shapley: main.o safe_stdlib.o io.o
+shapley: main.o safe_stdlib.o io.o function.o dijkstra.o graph.o queue.o
 
 %.o : %.c %.h
+
+%.o : %.cpp %.h
 
 .PHONY: clean TARGET
 clean:

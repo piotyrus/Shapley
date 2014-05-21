@@ -3,6 +3,8 @@
 #include "io.h"
 #include "safe_stdlib.h"
 #include "shapley.h"
+#include "function.h"
+#include "graph.h"
 
 int number_of_vertices(Edges *edges)
 {
@@ -32,6 +34,7 @@ int main(int argc, char *argv[])
     long kernel_time = 0;
     long summary_time = 0;
     int n;
+    Adjacency *adjacency;
 
     input = safeFopen(argv[1], "r");
     output = safeFopen(argv[2], "w");
@@ -39,15 +42,17 @@ int main(int argc, char *argv[])
     read_input(input, &edges);
 
     n = number_of_vertices(&edges);
-    shapley = (float *) safeMalloc(n * sizeof(float));
+    shapley = (double *) safeMalloc(n * sizeof(double));
 
-    compute_shapley(&edges, n, shapley, &kernel_time, &summary_time);
+    adjacency = createAdjacency(n, &edges, n);
+    compute_shapley(adjacency, n, shapley, function, &kernel_time, &summary_time);
     
     write_output(n, shapley, output);
 
     print_time("kernel", kernel_time);
     print_time("summary", summary_time);
 
+    releaseAdjacency(adjacency);
     free(shapley);
     free(edges.list);
     fclose(input);
